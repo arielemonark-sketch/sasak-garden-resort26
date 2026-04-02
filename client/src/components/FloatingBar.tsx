@@ -3,9 +3,11 @@
    Sticky bottom booking bar that appears after scrolling past hero
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useState } from "react";
 
 export default function FloatingBar() {
+  const { t } = useLang();
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -58,7 +60,7 @@ export default function FloatingBar() {
               marginTop: "2px",
             }}
           >
-            Сенггиги · Ломбок · Оценка 9.9
+            {t.floatingBar.subtitle}
           </div>
         </div>
         <div
@@ -83,7 +85,7 @@ export default function FloatingBar() {
               color: "#D4B88A",
             }}
           >
-            Великолепно · 113 отзывов
+            {t.floatingBar.ratingLabel}
           </span>
         </div>
       </div>
@@ -116,7 +118,7 @@ export default function FloatingBar() {
           e.currentTarget.style.background = "#D4B88A";
         }}
       >
-        Забронировать
+        {t.floatingBar.cta}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>

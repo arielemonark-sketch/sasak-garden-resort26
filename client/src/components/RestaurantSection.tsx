@@ -3,6 +3,7 @@
    Full-bleed restaurant section with menu highlights
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const menuHighlights = [
@@ -13,6 +14,7 @@ const menuHighlights = [
 ];
 
 export default function RestaurantSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -98,7 +100,7 @@ export default function RestaurantSection() {
                     color: "#D4B88A",
                   }}
                 >
-                  05 — Ресторан
+                  {t.restaurant.sectionNum}
                 </span>
                 <div
                   style={{
@@ -121,10 +123,10 @@ export default function RestaurantSection() {
                   transition: "opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s",
                 }}
               >
-                Вкус
+                {t.restaurant.title1}
                 <br />
                 <em style={{ fontStyle: "italic", fontWeight: 400, color: "#D4B88A" }}>
-                  Индонезии
+                  {t.restaurant.title2}
                 </em>
               </h2>
               <p
@@ -139,9 +141,7 @@ export default function RestaurantSection() {
                   transition: "opacity 0.9s ease 0.2s, transform 0.9s ease 0.2s",
                 }}
               >
-                Наш ресторан предлагает лучшее из индонезийской, средиземноморской
-                и американской кухни. Завтрак подаётся по меню с 7:00 до 10:00.
-                Доставка в номер доступна круглосуточно.
+                {t.restaurant.desc}
               </p>
               <div
                 style={{
@@ -156,7 +156,7 @@ export default function RestaurantSection() {
                   rel="noopener noreferrer"
                   className="btn-gold"
                 >
-                  Забронировать столик
+                  {t.restaurant.cta}
                 </a>
               </div>
             </div>
@@ -190,7 +190,7 @@ export default function RestaurantSection() {
                 marginBottom: "12px",
               }}
             >
-              Избранные блюда
+              {t.restaurant.menuTitle}
             </h3>
             <div
               style={{
@@ -209,8 +209,9 @@ export default function RestaurantSection() {
             }}
             className="menu-grid"
           >
-            {menuHighlights.map((section, i) => (
-              <div
+            {menuHighlights.map((section, i) => {
+              const catKey = ["breakfast","mains","drinks","desserts"][i] as keyof typeof t.restaurant.categories;
+              return (<div
                 key={section.category}
                 style={{
                   opacity: visible ? 1 : 0,
@@ -231,7 +232,7 @@ export default function RestaurantSection() {
                     borderBottom: "1px solid rgba(212,184,138,0.4)",
                   }}
                 >
-                  {section.category}
+                  {t.restaurant.categories[catKey]}
                 </div>
                 <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                   {section.items.map((item) => (
@@ -250,8 +251,8 @@ export default function RestaurantSection() {
                     </li>
                   ))}
                 </ul>
-              </div>
-            ))}
+              </div>);
+            })}
           </div>
         </div>
       </div>

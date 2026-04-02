@@ -6,9 +6,11 @@
    ============================================================ */
 
 import BookingWidget from "@/components/BookingWidget";
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 export default function BookingSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -108,7 +110,7 @@ export default function BookingSection() {
                   color: "#D4B88A",
                 }}
               >
-                Онлайн-бронирование
+                {t.bookingSection.sectionLabel}
               </span>
               <div
                 style={{
@@ -129,7 +131,7 @@ export default function BookingSection() {
                 marginBottom: "20px",
               }}
             >
-              Ваш
+              {t.bookingSection.title1}
               <br />
               <em
                 style={{
@@ -138,10 +140,10 @@ export default function BookingSection() {
                   color: "#D4B88A",
                 }}
               >
-                идеальный
+                {t.bookingSection.title2}
               </em>
               <br />
-              отдых
+              {t.bookingSection.title3}
             </h2>
 
             <p
@@ -153,17 +155,16 @@ export default function BookingSection() {
                 marginBottom: "28px",
               }}
             >
-              Выберите даты и гостей — мы перенаправим вас на
-              Booking.com для безопасного оформления.
+              {t.bookingSection.desc}
             </p>
 
             {/* Trust badges */}
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {[
-                { icon: "✓", text: "Бесплатная отмена до 24 ч" },
-                { icon: "✓", text: "Мгновенное подтверждение" },
-                { icon: "✓", text: "Лучшая цена гарантирована" },
-                { icon: "✓", text: "Оценка 9.9 · 113 отзывов" },
+                { icon: "✓", text: t.bookingSection.badge1 },
+                { icon: "✓", text: t.bookingSection.badge2 },
+                { icon: "✓", text: t.bookingSection.badge3 },
+                { icon: "✓", text: t.bookingSection.badge4 },
               ].map((badge) => (
                 <div
                   key={badge.text}

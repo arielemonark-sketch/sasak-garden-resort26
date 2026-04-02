@@ -4,9 +4,11 @@
    ============================================================ */
 
 import BookingWidget from "@/components/BookingWidget";
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 export default function HeroSection() {
+  const { t } = useLang();
   const heroRef = useRef<HTMLDivElement>(null);
   const [loaded, setLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
@@ -92,7 +94,7 @@ export default function HeroSection() {
               color: "#D4B88A",
             }}
           >
-            Сенггиги · Ломбок · Индонезия
+            {t.hero.location}
           </span>
         </div>
 
@@ -144,8 +146,7 @@ export default function HeroSection() {
             transition: "opacity 1s ease 1s, transform 1s ease 1s",
           }}
         >
-          Ваш личный тропический оазис. Окружённый садами,
-          в 5 минутах от пляжа Бату-Болонг.
+          {t.hero.subtitle}
         </p>
 
         {/* Rating badge */}
@@ -189,7 +190,7 @@ export default function HeroSection() {
                 letterSpacing: "0.05em",
               }}
             >
-              Великолепно
+              {t.hero.ratingLabel}
             </div>
             <div
               style={{
@@ -199,7 +200,7 @@ export default function HeroSection() {
                 letterSpacing: "0.08em",
               }}
             >
-              113 отзывов · Booking.com
+              {t.hero.ratingCount}
             </div>
           </div>
         </div>
@@ -235,7 +236,7 @@ export default function HeroSection() {
               e.currentTarget.style.color = "#2C1810";
             }}
           >
-            Забронировать сейчас
+            {t.hero.ctaBook}
           </a>
           <button
             onClick={() => {
@@ -244,7 +245,7 @@ export default function HeroSection() {
             className="btn-gold"
             style={{ background: "transparent" }}
           >
-            Узнать больше
+            {t.hero.ctaLearn}
           </button>
         </div>
       </div>
@@ -293,7 +294,7 @@ export default function HeroSection() {
             color: "rgba(248,245,240,0.6)",
           }}
         >
-          Прокрутить
+          {t.hero.scrollLabel}
         </span>
         <div
           style={{

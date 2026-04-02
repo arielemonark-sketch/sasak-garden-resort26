@@ -5,6 +5,7 @@
    Design: Kinfolk Tropical Editorial
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useState } from "react";
 
 interface BookingWidgetProps {
@@ -30,6 +31,7 @@ function toInputValue(d: Date): string {
 }
 
 export default function BookingWidget({ variant = "section" }: BookingWidgetProps) {
+  const { t, lang } = useLang();
   const today = new Date();
   const tomorrow = addDays(today, 1);
 
@@ -69,6 +71,9 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
     1,
     Math.round((new Date(checkout).getTime() - new Date(checkin).getTime()) / 86400000)
   );
+  const nightsLabel = lang === "ru"
+    ? nights === 1 ? t.bookingWidget.nights1 : nights < 5 ? t.bookingWidget.nights2 : t.bookingWidget.nights5
+    : nights === 1 ? t.bookingWidget.nights1 : t.bookingWidget.nights2;
 
   /* ---- Shared style tokens ---- */
   const bg = isHero
@@ -154,9 +159,9 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
             color: isHero ? "#F8F5F0" : "#0F4A38",
           }}
         >
-          Проверить наличие номеров
+          {t.bookingWidget.title}
         </div>
-        {nights > 0 && (
+            {nights > 0 && (
           <div
             style={{
               fontFamily: "'DM Sans', sans-serif",
@@ -166,7 +171,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
               border: `1px solid ${dividerColor}`,
             }}
           >
-            {nights} {nights === 1 ? "ночь" : nights < 5 ? "ночи" : "ночей"}
+            {nights} {nightsLabel}
           </div>
         )}
       </div>
@@ -185,7 +190,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
         {/* Check-in */}
         <div style={fieldStyle}>
           <label style={labelStyle}>
-            <span style={{ marginRight: "4px" }}>📅</span> Заезд
+            <span style={{ marginRight: "4px" }}>📅</span> {t.bookingWidget.checkin}
           </label>
           <input
             type="date"
@@ -211,7 +216,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
         {/* Check-out */}
         <div style={fieldStyle}>
           <label style={labelStyle}>
-            <span style={{ marginRight: "4px" }}>📅</span> Выезд
+            <span style={{ marginRight: "4px" }}>📅</span> {t.bookingWidget.checkout}
           </label>
           <input
             type="date"
@@ -237,7 +242,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
         {/* Adults */}
         <div style={{ ...fieldStyle, minWidth: "90px", maxWidth: "110px" }}>
           <label style={labelStyle}>
-            <span style={{ marginRight: "4px" }}>👤</span> Взрослые
+            <span style={{ marginRight: "4px" }}>👤</span> {t.bookingWidget.adults}
           </label>
           <select
             value={adults}
@@ -255,7 +260,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
         {/* Children */}
         <div style={{ ...fieldStyle, minWidth: "90px", maxWidth: "110px" }}>
           <label style={labelStyle}>
-            <span style={{ marginRight: "4px" }}>🧒</span> Дети
+            <span style={{ marginRight: "4px" }}>🧒</span> {t.bookingWidget.children}
           </label>
           <select
             value={children}
@@ -273,7 +278,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
         {/* Rooms */}
         <div style={{ ...fieldStyle, minWidth: "80px", maxWidth: "100px" }}>
           <label style={labelStyle}>
-            <span style={{ marginRight: "4px" }}>🏠</span> Номера
+            <span style={{ marginRight: "4px" }}>🏠</span> {t.bookingWidget.roomsLabel}
           </label>
           <select
             value={rooms}
@@ -325,7 +330,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
             e.currentTarget.style.transform = "scale(1)";
           }}
         >
-          Найти номер
+          {t.bookingWidget.cta}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M5 12h14M12 5l7 7-7 7" />
           </svg>
@@ -354,7 +359,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
           </svg>
-          Безопасное бронирование
+          {t.bookingWidget.secure}
         </div>
         <div
           style={{
@@ -369,7 +374,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="20 6 9 17 4 12" />
           </svg>
-          Бесплатная отмена
+          {t.bookingWidget.freeCancel}
         </div>
         <div
           style={{
@@ -385,7 +390,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
             <circle cx="12" cy="12" r="10" />
             <polyline points="12 6 12 12 16 14" />
           </svg>
-          Подтверждение мгновенно
+          {t.bookingWidget.instant}
         </div>
         <div
           style={{
@@ -395,7 +400,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
             color: isHero ? "rgba(248,245,240,0.4)" : "rgba(92,61,46,0.5)",
           }}
         >
-          Через Booking.com
+          {t.bookingWidget.via}
         </div>
       </div>
     </div>

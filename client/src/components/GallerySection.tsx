@@ -3,6 +3,7 @@
    Asymmetric masonry gallery with Booking.com CDN photos
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const PHOTO_IDS = [
@@ -75,6 +76,7 @@ const GALLERY_PHOTOS = [
 ];
 
 export default function GallerySection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [lightbox, setLightbox] = useState<string | null>(null);
@@ -128,7 +130,7 @@ export default function GallerySection() {
         >
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
-              <span className="section-label">02 — Галерея</span>
+              <span className="section-label">{t.gallery.sectionNum}</span>
               <div className="gold-line" style={{ width: "40px" }} />
             </div>
             <h2
@@ -141,10 +143,10 @@ export default function GallerySection() {
                 margin: 0,
               }}
             >
-              Жизнь в тропическом
+              {t.gallery.title1}
               <br />
               <em style={{ fontStyle: "italic", fontWeight: 400, color: "#2C1810" }}>
-                саду
+                {t.gallery.title2}
               </em>
             </h2>
           </div>
@@ -154,7 +156,7 @@ export default function GallerySection() {
             rel="noopener noreferrer"
             className="btn-booking"
           >
-            Все 69+ фото
+            {t.gallery.viewAll}
           </a>
         </div>
 

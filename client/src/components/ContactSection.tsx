@@ -3,9 +3,11 @@
    Location info, contact details, booking CTA
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 export default function ContactSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -44,7 +46,7 @@ export default function ContactSection() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
-            <span className="section-label">07 — Расположение</span>
+            <span className="section-label">{t.contact.sectionNum}</span>
             <div className="gold-line" style={{ width: "40px" }} />
           </div>
           <h2
@@ -57,10 +59,10 @@ export default function ContactSection() {
               margin: 0,
             }}
           >
-            Найдите нас
+            {t.contact.title1}
             <br />
             <em style={{ fontStyle: "italic", fontWeight: 400, color: "#2C1810" }}>
-              в Сенггиги
+              {t.contact.title2}
             </em>
           </h2>
         </div>
@@ -96,7 +98,7 @@ export default function ContactSection() {
                   marginBottom: "12px",
                 }}
               >
-                Адрес
+                {t.contact.addressLabel}
               </div>
               <p
                 style={{
@@ -130,7 +132,7 @@ export default function ContactSection() {
                   marginBottom: "12px",
                 }}
               >
-                Телефон
+                {t.contact.phoneLabel}
               </div>
               <a
                 href="tel:+6281917776161"
@@ -216,7 +218,7 @@ export default function ContactSection() {
                   marginBottom: "16px",
                 }}
               >
-                Заезд / Выезд
+                {t.contact.checkinLabel}
               </div>
               <div style={{ display: "flex", gap: "32px" }}>
                 <div>
@@ -237,7 +239,7 @@ export default function ContactSection() {
                       color: "#999",
                     }}
                   >
-                    Заезд
+                    {t.contact.checkin}
                   </div>
                 </div>
                 <div
@@ -264,7 +266,7 @@ export default function ContactSection() {
                       color: "#999",
                     }}
                   >
-                    Выезд
+                    {t.contact.checkout}
                   </div>
                 </div>
               </div>
@@ -300,11 +302,7 @@ export default function ContactSection() {
                 marginTop: "1px",
               }}
             >
-              {[
-                { place: "Пляж Бату-Болонг", dist: "5 мин пешком" },
-                { place: "Центр Сенггиги", dist: "10 мин пешком" },
-                { place: "Аэропорт Ломбок", dist: "45 мин на авто" },
-              ].map((item) => (
+              {t.contact.nearby.map((item) => (
                 <div
                   key={item.place}
                   style={{
@@ -369,7 +367,7 @@ export default function ContactSection() {
                 marginBottom: "24px",
               }}
             >
-              Ваш тропический отдых ждёт
+              {t.contact.ctaTitle}
             </span>
             <h2
               className="font-serif"
@@ -381,9 +379,9 @@ export default function ContactSection() {
                 marginBottom: "32px",
               }}
             >
-              Забронируйте
+              {t.contact.ctaSubtitle}
               <em style={{ fontStyle: "italic", fontWeight: 400, color: "#D4B88A" }}>
-                {" "}сейчас
+                {" "}{t.contact.ctaBtn}
               </em>
             </h2>
             <p
@@ -396,7 +394,7 @@ export default function ContactSection() {
                 margin: "0 auto 40px",
               }}
             >
-              Оценка 9.9 · 113 отзывов · Лучшая цена гарантирована на Booking.com
+              {t.contact.ctaDesc}
             </p>
             <a
               href="https://www.booking.com/hotel/id/sasak-garden-homestay-mataram.ru.html"

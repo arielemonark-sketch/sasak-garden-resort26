@@ -3,6 +3,7 @@
    Guest reviews from Booking.com with beautiful cards
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const reviews = [
@@ -80,16 +81,17 @@ const reviews = [
   },
 ];
 
-const ratingCategories = [
-  { name: "Персонал", score: 10.0 },
-  { name: "Удобства", score: 9.9 },
-  { name: "Чистота", score: 9.9 },
-  { name: "Комфорт", score: 9.9 },
-  { name: "Цена/качество", score: 9.9 },
-  { name: "Расположение", score: 9.8 },
+const ratingCategoriesBase = [
+  { key: "staff", score: 10.0 },
+  { key: "facilities", score: 9.9 },
+  { key: "cleanliness", score: 9.9 },
+  { key: "comfort", score: 9.9 },
+  { key: "value", score: 9.9 },
+  { key: "location", score: 9.8 },
 ];
 
 export default function ReviewsSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -147,7 +149,7 @@ export default function ReviewsSection() {
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
               <span style={{ fontFamily: "'DM Sans', sans-serif", fontSize: "11px", fontWeight: 500, letterSpacing: "0.18em", textTransform: "uppercase", color: "#D4B88A" }}>
-                06 — Отзывы
+                {t.reviews.sectionNum}
               </span>
               <div style={{ width: "40px", height: "1px", background: "linear-gradient(90deg, transparent, #D4B88A, transparent)" }} />
             </div>
@@ -161,10 +163,10 @@ export default function ReviewsSection() {
                 margin: 0,
               }}
             >
-              Что говорят
+              {t.reviews.title1}
               <br />
               <em style={{ fontStyle: "italic", fontWeight: 400, color: "#D4B88A" }}>
-                наши гости
+                {t.reviews.title2}
               </em>
             </h2>
           </div>
@@ -199,13 +201,13 @@ export default function ReviewsSection() {
                   marginTop: "8px",
                 }}
               >
-                Великолепно · 113 отзывов
+                {t.reviews.overallLabel}
               </div>
             </div>
             <div style={{ flex: 1, minWidth: "200px" }}>
-              {ratingCategories.map((cat) => (
+              {ratingCategoriesBase.map((cat) => (
                 <div
-                  key={cat.name}
+                  key={cat.key}
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -222,7 +224,7 @@ export default function ReviewsSection() {
                       flexShrink: 0,
                     }}
                   >
-                    {cat.name}
+                    {t.reviews.ratingLabels[cat.key as keyof typeof t.reviews.ratingLabels]}
                   </span>
                   <div
                     style={{

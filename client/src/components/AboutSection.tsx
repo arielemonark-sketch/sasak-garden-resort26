@@ -4,9 +4,11 @@
    Kinfolk editorial: asymmetric layout, large serif quote
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 export default function AboutSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -47,7 +49,7 @@ export default function AboutSection() {
             transition: "opacity 0.8s ease, transform 0.8s ease",
           }}
         >
-          <span className="section-label">01 — О резорте</span>
+          <span className="section-label">{t.about.sectionNum}</span>
           <div className="gold-line" style={{ width: "40px" }} />
         </div>
 
@@ -77,10 +79,10 @@ export default function AboutSection() {
                 transition: "opacity 0.9s ease 0.1s, transform 0.9s ease 0.1s",
               }}
             >
-              Бывший homestay,
+              {t.about.title1}
               <br />
               <em style={{ fontStyle: "italic", fontWeight: 400, color: "#2C1810" }}>
-                теперь — boutique resort
+                {t.about.title2}
               </em>
             </h2>
 
@@ -96,9 +98,7 @@ export default function AboutSection() {
                 transition: "opacity 0.9s ease 0.25s, transform 0.9s ease 0.25s",
               }}
             >
-              Sasak Garden Resort — это место, где тропический сад встречается с персональной заботой.
-              Окружённый пышной зеленью в самом сердце Сенггиги, резорт предлагает тихое убежище
-              всего в 5 минутах пешком от пляжа Бату-Болонг.
+              {t.about.p1}
             </p>
 
             <p
@@ -113,9 +113,7 @@ export default function AboutSection() {
                 transition: "opacity 0.9s ease 0.35s, transform 0.9s ease 0.35s",
               }}
             >
-              Каждый номер оснащён кондиционером, высокоскоростным Wi-Fi до 200 Мбит/с,
-              Smart 4K TV с Netflix и HBO, горячим душем. Ресторан при резорте предлагает
-              блюда индонезийской, американской и средиземноморской кухни.
+              {t.about.p2}
             </p>
 
             {/* Stats row */}
@@ -131,10 +129,10 @@ export default function AboutSection() {
               }}
             >
               {[
-                { num: "9.9", label: "Рейтинг Booking.com" },
-                { num: "113", label: "Отзывов гостей" },
-                { num: "65+", label: "Удобств и услуг" },
-                { num: "5 мин", label: "До пляжа" },
+                { num: t.about.stat1Val, label: t.about.stat1Label },
+                { num: t.about.stat2Val, label: t.about.stat2Label },
+                { num: t.about.stat3Val, label: t.about.stat3Label },
+                { num: t.about.stat4Val, label: t.about.stat4Label },
               ].map((stat) => (
                 <div key={stat.num} style={{ textAlign: "center" }}>
                   <div
@@ -223,8 +221,7 @@ export default function AboutSection() {
                   paddingTop: "16px",
                 }}
               >
-                Welcome to Sasak Garden Resort, where comfort meets local charm
-                in the heart of Senggigi. You're not just a guest — you're part of our story.
+                {t.about.quote}
               </p>
               <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
                 <div
@@ -263,7 +260,7 @@ export default function AboutSection() {
                       letterSpacing: "0.08em",
                     }}
                   >
-                    Хозяин · Оценка 10/10
+                    {t.about.quoteAuthor}
                   </div>
                 </div>
               </div>

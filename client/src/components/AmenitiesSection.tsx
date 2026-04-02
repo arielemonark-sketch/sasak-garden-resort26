@@ -3,6 +3,7 @@
    65+ amenities organized by category with minimal vector icons
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const amenityCategories = [
@@ -92,6 +93,7 @@ const amenityCategories = [
 ];
 
 export default function AmenitiesSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -135,7 +137,7 @@ export default function AmenitiesSection() {
         >
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
-              <span className="section-label">04 — Удобства</span>
+              <span className="section-label">{t.amenities.sectionNum}</span>
               <div className="gold-line" style={{ width: "40px" }} />
             </div>
             <h2
@@ -148,10 +150,10 @@ export default function AmenitiesSection() {
                 margin: 0,
               }}
             >
-              65+ удобств
+              {t.amenities.title1}
               <br />
               <em style={{ fontStyle: "italic", fontWeight: 400, color: "#2C1810" }}>
-                для вашего комфорта
+                {t.amenities.title2}
               </em>
             </h2>
           </div>
@@ -165,9 +167,7 @@ export default function AmenitiesSection() {
                 margin: 0,
               }}
             >
-              Продуманные удобства с оценкой гостей{" "}
-              <strong style={{ color: "#0F4A38" }}>9.9 из 10</strong>.
-              Каждая деталь создана для того, чтобы ваш отдых был безупречным.
+              {t.amenities.subtitle}
             </p>
           </div>
         </div>
@@ -271,7 +271,7 @@ export default function AmenitiesSection() {
                 marginBottom: "8px",
               }}
             >
-              Персонал говорит на
+              {t.amenities.langTitle}
             </div>
             <div
               className="font-serif"
@@ -281,11 +281,11 @@ export default function AmenitiesSection() {
                 color: "#F8F5F0",
               }}
             >
-              5 языках
+              {t.amenities.langCount}
             </div>
           </div>
           <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-            {["Русский", "Английский", "Индонезийский", "Украинский", "Филиппинский"].map((lang) => (
+            {t.amenities.languages.map((lang) => (
               <span
                 key={lang}
                 style={{

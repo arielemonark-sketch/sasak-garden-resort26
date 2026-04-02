@@ -3,6 +3,7 @@
    Room cards with photos, descriptions, amenities table
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useRef, useState } from "react";
 
 const rooms = [
@@ -52,6 +53,7 @@ const amenityRows = [
 ];
 
 export default function RoomsSection() {
+  const { t } = useLang();
   const sectionRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -89,7 +91,7 @@ export default function RoomsSection() {
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "20px" }}>
-            <span className="section-label">03 — Номера</span>
+            <span className="section-label">{t.rooms.sectionNum}</span>
             <div className="gold-line" style={{ width: "40px" }} />
           </div>
           <h2
@@ -102,10 +104,10 @@ export default function RoomsSection() {
               margin: 0,
             }}
           >
-            Ваше пространство
+            {t.rooms.title1}
             <br />
             <em style={{ fontStyle: "italic", fontWeight: 400, color: "#2C1810" }}>
-              для отдыха
+              {t.rooms.title2}
             </em>
           </h2>
         </div>
@@ -271,7 +273,7 @@ export default function RoomsSection() {
                     {room.bed}
                   </span>
                   <span style={{ marginLeft: "auto", fontSize: "13px", color: "#999" }}>
-                    {room.guests} гостя
+                    {room.guests}
                   </span>
                 </div>
 
@@ -282,7 +284,7 @@ export default function RoomsSection() {
                   className="btn-booking"
                   style={{ width: "100%", justifyContent: "center" }}
                 >
-                  Выбрать даты
+                  {t.rooms.bookRoom}
                 </a>
               </div>
             </div>
@@ -306,7 +308,7 @@ export default function RoomsSection() {
               marginBottom: "32px",
             }}
           >
-            Сравнение удобств
+            {t.rooms.compareTitle}
           </h3>
           <div style={{ overflowX: "auto" }}>
             <table
@@ -329,7 +331,7 @@ export default function RoomsSection() {
                       color: "#999",
                     }}
                   >
-                    Удобство
+                    {t.rooms.feature}
                   </th>
                   <th
                     style={{

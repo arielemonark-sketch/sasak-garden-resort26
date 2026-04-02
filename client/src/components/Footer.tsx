@@ -3,7 +3,10 @@
    Minimal editorial footer with links and social
    ============================================================ */
 
+import { useLang } from "@/contexts/LanguageContext";
+
 export default function Footer() {
+  const { t } = useLang();
   const year = new Date().getFullYear();
 
   const handleNavClick = (href: string) => {
@@ -66,8 +69,7 @@ export default function Footer() {
                 maxWidth: "280px",
               }}
             >
-              Бутик-резорт в тропическом саду Сенггиги.
-              Оценка 9.9 · 113 отзывов на Booking.com.
+              {t.footer.tagline}
             </p>
             {/* Social links */}
             <div style={{ display: "flex", gap: "12px", marginTop: "20px" }}>
@@ -147,17 +149,10 @@ export default function Footer() {
                 marginBottom: "20px",
               }}
             >
-              Навигация
+              {t.footer.navTitle}
             </div>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {[
-                { label: "О резорте", href: "#about" },
-                { label: "Галерея", href: "#gallery" },
-                { label: "Номера", href: "#rooms" },
-                { label: "Удобства", href: "#amenities" },
-                { label: "Ресторан", href: "#restaurant" },
-                { label: "Отзывы", href: "#reviews" },
-              ].map((link) => (
+              {t.footer.navLinks.map((link) => (
                 <li key={link.href} style={{ marginBottom: "10px" }}>
                   <button
                     onClick={() => handleNavClick(link.href)}
@@ -198,16 +193,10 @@ export default function Footer() {
                 marginBottom: "20px",
               }}
             >
-              Информация
+              {t.footer.infoTitle}
             </div>
             <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-              {[
-                "Политика отмены",
-                "Правила проживания",
-                "Политика конфиденциальности",
-                "Специальные предложения",
-                "Корпоративные тарифы",
-              ].map((item) => (
+              {t.footer.infoLinks.map((item) => (
                 <li key={item} style={{ marginBottom: "10px" }}>
                   <span
                     style={{
@@ -236,7 +225,7 @@ export default function Footer() {
                 marginBottom: "20px",
               }}
             >
-              Бронирование
+              {t.footer.bookingTitle}
             </div>
             <p
               style={{
@@ -247,7 +236,7 @@ export default function Footer() {
                 marginBottom: "20px",
               }}
             >
-              Лучшая цена гарантирована при бронировании через Booking.com
+              {t.footer.bookingDesc}
             </p>
             <a
               href="https://www.booking.com/hotel/id/sasak-garden-homestay-mataram.ru.html"
@@ -278,7 +267,7 @@ export default function Footer() {
                 e.currentTarget.style.color = "#D4B88A";
               }}
             >
-              Забронировать
+              {t.footer.bookingBtn}
             </a>
           </div>
         </div>
@@ -301,7 +290,7 @@ export default function Footer() {
               margin: 0,
             }}
           >
-            © {year} Sasak Garden Resort. Все права защищены.
+            {t.footer.copyright.replace("{year}", String(year))}
           </p>
           <p
             style={{
