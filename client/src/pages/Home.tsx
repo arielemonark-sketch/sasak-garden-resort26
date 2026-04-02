@@ -8,7 +8,9 @@
 
 import AboutSection from "@/components/AboutSection";
 import AmenitiesSection from "@/components/AmenitiesSection";
+import AttractionsSection from "@/components/AttractionsSection";
 import BookingSection from "@/components/BookingSection";
+import VideoGallerySection from "@/components/VideoGallerySection";
 import ContactSection from "@/components/ContactSection";
 import FAQSection from "@/components/FAQSection";
 import FloatingBar from "@/components/FloatingBar";
@@ -54,11 +56,13 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <GallerySection />
+      <VideoGallerySection />
       <RoomsSection />
       <BookingSection />
       <AmenitiesSection />
       <RestaurantSection />
       <ReviewsSection />
+      <AttractionsSection />
       <FAQSection />
       <ContactSection />
       <Footer />

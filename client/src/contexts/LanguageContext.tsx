@@ -20,6 +20,8 @@ export interface Translations {
     reviews: string;
     contacts: string;
     bookNow: string;
+    attractions: string;
+    videoGallery: string;
   };
   // Hero
   hero: {
@@ -185,13 +187,49 @@ export interface Translations {
     ratingLabel: string;
     cta: string;
   };
+  // Video Gallery
+  videoGallery: {
+    sectionNum: string;
+    title1: string;
+    title2: string;
+    subtitle: string;
+    playLabel: string;
+    closeLabel: string;
+    prevLabel: string;
+    nextLabel: string;
+    videoLabels: string[];
+  };
+  // Attractions
+  attractions: {
+    sectionNum: string;
+    title1: string;
+    title2: string;
+    subtitle: string;
+    distLabel: string;
+    ctaBook: string;
+    categories: {
+      beaches: string;
+      diving: string;
+      culture: string;
+      islands: string;
+      adventure: string;
+      dining: string;
+    };
+    items: Array<{
+      category: string;
+      title: string;
+      desc: string;
+      dist: string;
+      duration: string;
+    }>;
+  };
 }
 
 const ru: Translations = {
   nav: {
     about: "О нас", gallery: "Галерея", rooms: "Номера", booking: "Бронирование",
     amenities: "Удобства", restaurant: "Ресторан", faq: "FAQ", reviews: "Отзывы",
-    contacts: "Контакты", bookNow: "Забронировать",
+    contacts: "Контакты", bookNow: "Забронировать", attractions: "Досуг", videoGallery: "Видео",
   },
   hero: {
     location: "Сенггиги · Ломбок · Индонезия",
@@ -399,13 +437,113 @@ const ru: Translations = {
     ratingLabel: "Великолепно · 113 отзывов",
     cta: "Забронировать",
   },
+  videoGallery: {
+    sectionNum: "10 — Видео",
+    title1: "Жизнь",
+    title2: "резорта",
+    subtitle: "Почувствуйте атмосферу Sasak Garden Resort через видео. Тропический сад, бассейн, номера и окрестности — всё в одном месте.",
+    playLabel: "Смотреть",
+    closeLabel: "Закрыть",
+    prevLabel: "Назад",
+    nextLabel: "Вперёд",
+    videoLabels: [
+      "Территория резорта",
+      "Тропический сад",
+      "Бассейн и зона отдыха",
+      "Номера и интерьер",
+      "Ресторан и завтрак",
+      "Вид на окрестности",
+      "Атмосфера резорта",
+    ],
+  },
+  attractions: {
+    sectionNum: "09 — Досуг",
+    title1: "Исследуйте",
+    title2: "Ломбок",
+    subtitle: "Сенггиги — идеальная база для исследования острова. Пляжи мирового класса, острова Гили, вулкан Ринджани и древние храмы — всё это в нескольких минутах от резорта.",
+    distLabel: "От резорта",
+    ctaBook: "Забронировать экскурсию",
+    categories: {
+      beaches: "Пляжи",
+      diving: "Дайвинг и снорклинг",
+      culture: "Культура",
+      islands: "Острова Гили",
+      adventure: "Приключения",
+      dining: "Рестораны",
+    },
+    items: [
+      {
+        category: "beaches",
+        title: "Пляж Бату-Болонг",
+        desc: "Один из лучших пляжей Ломбока с черным песком. Идеальное место для сёрфинга, снорклинга и встречи заката.",
+        dist: "5 мин пешком",
+        duration: "Целый день",
+      },
+      {
+        category: "diving",
+        title: "Дайвинг в Сенггиги",
+        desc: "Богатый подводный мир: черепаховые рифы, морские черепахи и тропические рыбы. Для начинающих и опытных.",
+        dist: "10 мин на авто",
+        duration: "2–4 часа",
+      },
+      {
+        category: "islands",
+        title: "Острова Гили",
+        desc: "Три райских острова с белоснежными пляжами и прозрачной водой. Доступны на пароме или быстроходном катере.",
+        dist: "2 часа на пароме",
+        duration: "1–2 дня",
+      },
+      {
+        category: "adventure",
+        title: "Вулкан Ринджани",
+        desc: "Восхождение на действующий вулкан — одно из самых зрелищных приключений Ломбока. Старт в 3:00 ночи.",
+        dist: "2 часа на авто",
+        duration: "8–10 часов",
+      },
+      {
+        category: "culture",
+        title: "Храм Пура Лонггар",
+        desc: "Древнейший храм Ломбока с уникальной сасакской архитектурой. Центр традиционной культуры.",
+        dist: "30 мин на авто",
+        duration: "2–3 часа",
+      },
+      {
+        category: "beaches",
+        title: "Пляж Мангсит-Бич",
+        desc: "Дикий пляж с розовым песком и кристальной водой. Одно из самых фотогеничных мест Ломбока.",
+        dist: "45 мин на авто",
+        duration: "Полдня",
+      },
+      {
+        category: "adventure",
+        title: "Сёрфинг в Сенггиги",
+        desc: "Волны для начинающих и опытных сёрферов. Инструкторы доступны прямо на пляже Бату-Болонг.",
+        dist: "5 мин пешком",
+        duration: "2–4 часа",
+      },
+      {
+        category: "culture",
+        title: "Деревня сасаков",
+        desc: "Традиционные деревни коренных жителей Ломбока. Уникальная архитектура, традиции и ремёсла.",
+        dist: "1 час на авто",
+        duration: "3–4 часа",
+      },
+      {
+        category: "diving",
+        title: "Снорклинг на Гили Мено",
+        desc: "Прозрачные воды, множество рыб и кораллов. Одно из лучших мест для снорклинга в Индонезии.",
+        dist: "2 часа на пароме",
+        duration: "1 день",
+      },
+    ],
+  },
 };
 
 const en: Translations = {
   nav: {
     about: "About", gallery: "Gallery", rooms: "Rooms", booking: "Book Now",
     amenities: "Amenities", restaurant: "Restaurant", faq: "FAQ", reviews: "Reviews",
-    contacts: "Contact", bookNow: "Book Now",
+    contacts: "Contact", bookNow: "Book Now", attractions: "Explore", videoGallery: "Video",
   },
   hero: {
     location: "Senggigi · Lombok · Indonesia",
@@ -612,6 +750,106 @@ const en: Translations = {
     subtitle: "Senggigi · Lombok · Score 9.9",
     ratingLabel: "Exceptional · 113 reviews",
     cta: "Book Now",
+  },
+  videoGallery: {
+    sectionNum: "10 — Video",
+    title1: "Resort",
+    title2: "in motion",
+    subtitle: "Experience the atmosphere of Sasak Garden Resort through video. Tropical garden, pool, rooms and surroundings — all in one place.",
+    playLabel: "Watch",
+    closeLabel: "Close",
+    prevLabel: "Previous",
+    nextLabel: "Next",
+    videoLabels: [
+      "Resort Grounds",
+      "Tropical Garden",
+      "Pool & Leisure",
+      "Rooms & Interior",
+      "Restaurant & Breakfast",
+      "Surrounding Views",
+      "Resort Atmosphere",
+    ],
+  },
+  attractions: {
+    sectionNum: "09 — Explore",
+    title1: "Explore",
+    title2: "Lombok",
+    subtitle: "Senggigi is the perfect base for exploring the island. World-class beaches, the Gili Islands, Mount Rinjani and ancient temples — all just minutes from the resort.",
+    distLabel: "From resort",
+    ctaBook: "Book Excursion",
+    categories: {
+      beaches: "Beaches",
+      diving: "Diving & Snorkelling",
+      culture: "Culture",
+      islands: "Gili Islands",
+      adventure: "Adventure",
+      dining: "Dining",
+    },
+    items: [
+      {
+        category: "beaches",
+        title: "Batu Bolong Beach",
+        desc: "One of Lombok's finest beaches with black sand. Perfect for surfing, snorkelling and watching the sunset.",
+        dist: "5 min walk",
+        duration: "All day",
+      },
+      {
+        category: "diving",
+        title: "Senggigi Diving",
+        desc: "Rich underwater world: coral reefs, sea turtles and tropical fish. Suitable for beginners and experienced divers.",
+        dist: "10 min by car",
+        duration: "2–4 hours",
+      },
+      {
+        category: "islands",
+        title: "Gili Islands",
+        desc: "Three paradise islands with white-sand beaches and crystal-clear water. Accessible by ferry or speedboat.",
+        dist: "2 hrs by ferry",
+        duration: "1–2 days",
+      },
+      {
+        category: "adventure",
+        title: "Mount Rinjani",
+        desc: "Trekking to an active volcano — one of Lombok's most spectacular adventures. Departs at 3:00 AM.",
+        dist: "2 hrs by car",
+        duration: "8–10 hours",
+      },
+      {
+        category: "culture",
+        title: "Pura Longgear Temple",
+        desc: "Lombok's oldest temple with unique Sasak architecture. A centre of traditional culture and heritage.",
+        dist: "30 min by car",
+        duration: "2–3 hours",
+      },
+      {
+        category: "beaches",
+        title: "Mawun Beach",
+        desc: "A wild beach with pink sand and crystal-clear water. One of the most photogenic spots on Lombok.",
+        dist: "45 min by car",
+        duration: "Half day",
+      },
+      {
+        category: "adventure",
+        title: "Surfing in Senggigi",
+        desc: "Waves for beginners and experienced surfers alike. Instructors available right on Batu Bolong Beach.",
+        dist: "5 min walk",
+        duration: "2–4 hours",
+      },
+      {
+        category: "culture",
+        title: "Sasak Villages",
+        desc: "Traditional villages of Lombok's indigenous people. Unique architecture, customs and crafts.",
+        dist: "1 hr by car",
+        duration: "3–4 hours",
+      },
+      {
+        category: "diving",
+        title: "Gili Meno Snorkelling",
+        desc: "Crystal-clear waters, abundant fish and corals. One of Indonesia's best snorkelling spots.",
+        dist: "2 hrs by ferry",
+        duration: "1 day",
+      },
+    ],
   },
 };
 

@@ -15,12 +15,14 @@ export default function Navigation() {
   const navLinks = [
     { label: t.nav.about, href: "#about" },
     { label: t.nav.gallery, href: "#gallery" },
+    { label: t.nav.videoGallery, href: "#video-gallery" },
     { label: t.nav.rooms, href: "#rooms" },
     { label: t.nav.booking, href: "#booking" },
     { label: t.nav.amenities, href: "#amenities" },
     { label: t.nav.restaurant, href: "#restaurant" },
     { label: t.nav.faq, href: "#faq" },
     { label: t.nav.reviews, href: "#reviews" },
+    { label: t.nav.attractions, href: "#attractions" },
     { label: t.nav.contacts, href: "#contact" },
   ];
 
