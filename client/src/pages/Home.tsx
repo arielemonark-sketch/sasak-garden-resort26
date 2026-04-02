@@ -8,6 +8,7 @@
 
 import AboutSection from "@/components/AboutSection";
 import AmenitiesSection from "@/components/AmenitiesSection";
+import BookingSection from "@/components/BookingSection";
 import ContactSection from "@/components/ContactSection";
 import FloatingBar from "@/components/FloatingBar";
 import Footer from "@/components/Footer";
@@ -53,6 +54,7 @@ export default function Home() {
       <AboutSection />
       <GallerySection />
       <RoomsSection />
+      <BookingSection />
       <AmenitiesSection />
       <RestaurantSection />
       <ReviewsSection />

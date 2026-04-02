@@ -3,6 +3,7 @@
    Full-viewport immersive hero with parallax, large serif title
    ============================================================ */
 
+import BookingWidget from "@/components/BookingWidget";
 import { useEffect, useRef, useState } from "react";
 
 export default function HeroSection() {
@@ -30,7 +31,7 @@ export default function HeroSection() {
       style={{
         position: "relative",
         height: "100vh",
-        minHeight: "600px",
+        minHeight: "700px",
         overflow: "hidden",
         display: "flex",
         alignItems: "center",
@@ -70,6 +71,7 @@ export default function HeroSection() {
           flexDirection: "column",
           alignItems: "center",
           gap: "24px",
+          paddingBottom: "260px",
         }}
       >
         {/* Label */}
@@ -247,11 +249,29 @@ export default function HeroSection() {
         </div>
       </div>
 
+      {/* Booking widget — anchored to bottom of hero */}
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 3,
+          opacity: loaded ? 1 : 0,
+          transform: loaded ? "translateY(0)" : "translateY(30px)",
+          transition: "opacity 1s ease 1.6s, transform 1s ease 1.6s",
+        }}
+      >
+        <div className="container" style={{ paddingBottom: 0 }}>
+          <BookingWidget variant="hero" />
+        </div>
+      </div>
+
       {/* Scroll indicator */}
       <div
         style={{
           position: "absolute",
-          bottom: "40px",
+          bottom: "320px",
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",

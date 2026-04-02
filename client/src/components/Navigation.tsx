@@ -9,6 +9,7 @@ const navLinks = [
   { label: "О нас", href: "#about" },
   { label: "Галерея", href: "#gallery" },
   { label: "Номера", href: "#rooms" },
+  { label: "Бронирование", href: "#booking" },
   { label: "Удобства", href: "#amenities" },
   { label: "Ресторан", href: "#restaurant" },
   { label: "Отзывы", href: "#reviews" },

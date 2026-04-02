@@ -87,23 +87,25 @@ export default function FloatingBar() {
           </span>
         </div>
       </div>
-      <a
-        href="https://www.booking.com/hotel/id/sasak-garden-homestay-mataram.ru.html"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => {
+          const el = document.querySelector("#booking");
+          if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }}
         style={{
           display: "inline-flex",
           alignItems: "center",
           gap: "8px",
           padding: "12px 28px",
           background: "#D4B88A",
+          border: "none",
           color: "#2C1810",
           fontFamily: "'DM Sans', sans-serif",
           fontSize: "13px",
           fontWeight: 600,
           letterSpacing: "0.1em",
           textTransform: "uppercase",
-          textDecoration: "none",
+          cursor: "pointer",
           flexShrink: 0,
           transition: "background 0.3s ease",
         }}
@@ -118,7 +120,7 @@ export default function FloatingBar() {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M5 12h14M12 5l7 7-7 7" />
         </svg>
-      </a>
+      </button>
 
       <style>{`
         @media (max-width: 640px) {
