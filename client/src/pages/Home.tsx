@@ -1,25 +1,64 @@
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+/* ============================================================
+   Home — Sasak Garden Resort
+   Main landing page assembling all sections
+   Design: Kinfolk Tropical Editorial
+   Colors: Cream #F8F5F0, Emerald #0F4A38, Gold #D4B88A, Brown #2C1810
+   Fonts: Playfair Display (serif headings) + DM Sans (body)
+   ============================================================ */
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Best Practices, Design Guide and Common Pitfalls
- */
+import AboutSection from "@/components/AboutSection";
+import AmenitiesSection from "@/components/AmenitiesSection";
+import ContactSection from "@/components/ContactSection";
+import FloatingBar from "@/components/FloatingBar";
+import Footer from "@/components/Footer";
+import GallerySection from "@/components/GallerySection";
+import HeroSection from "@/components/HeroSection";
+import Navigation from "@/components/Navigation";
+import RestaurantSection from "@/components/RestaurantSection";
+import ReviewsSection from "@/components/ReviewsSection";
+import RoomsSection from "@/components/RoomsSection";
+import { useEffect } from "react";
+
 export default function Home() {
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  // Scroll reveal observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    document.querySelectorAll(".reveal, .clip-reveal").forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
+    <div
+      style={{
+        background: "#F8F5F0",
+        minHeight: "100vh",
+        overflowX: "hidden",
+      }}
+    >
+      <Navigation />
+      <HeroSection />
+      <AboutSection />
+      <GallerySection />
+      <RoomsSection />
+      <AmenitiesSection />
+      <RestaurantSection />
+      <ReviewsSection />
+      <ContactSection />
+      <Footer />
+      <FloatingBar />
     </div>
   );
 }
