@@ -21,6 +21,7 @@ import Navigation from "@/components/Navigation";
 import RestaurantSection from "@/components/RestaurantSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import RoomsSection from "@/components/RoomsSection";
+import SpecialOffersSection from "@/components/SpecialOffersSection";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -58,6 +59,7 @@ export default function Home() {
       <GallerySection />
       <VideoGallerySection />
       <RoomsSection />
+      <SpecialOffersSection />
       <BookingSection />
       <AmenitiesSection />
       <RestaurantSection />

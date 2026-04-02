@@ -17,6 +17,7 @@ export default function Navigation() {
     { label: t.nav.gallery, href: "#gallery" },
     { label: t.nav.videoGallery, href: "#video-gallery" },
     { label: t.nav.rooms, href: "#rooms" },
+    { label: t.nav.specialOffers, href: "#special-offers" },
     { label: t.nav.booking, href: "#booking" },
     { label: t.nav.amenities, href: "#amenities" },
     { label: t.nav.restaurant, href: "#restaurant" },

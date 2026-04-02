@@ -22,6 +22,7 @@ export interface Translations {
     bookNow: string;
     attractions: string;
     videoGallery: string;
+    specialOffers: string;
   };
   // Hero
   hero: {
@@ -199,6 +200,29 @@ export interface Translations {
     nextLabel: string;
     videoLabels: string[];
   };
+  // Special Offers
+  specialOffers: {
+    sectionNum: string;
+    title1: string;
+    title2: string;
+    subtitle: string;
+    badge: string;
+    ctaBook: string;
+    ctaDetails: string;
+    limitedLabel: string;
+    packages: Array<{
+      id: string;
+      tag: string;
+      title: string;
+      subtitle: string;
+      duration: string;
+      guests: string;
+      price: string;
+      priceNote: string;
+      highlights: string[];
+      cta: string;
+    }>;
+  };
   // Attractions
   attractions: {
     sectionNum: string;
@@ -229,7 +253,7 @@ const ru: Translations = {
   nav: {
     about: "О нас", gallery: "Галерея", rooms: "Номера", booking: "Бронирование",
     amenities: "Удобства", restaurant: "Ресторан", faq: "FAQ", reviews: "Отзывы",
-    contacts: "Контакты", bookNow: "Забронировать", attractions: "Досуг", videoGallery: "Видео",
+    contacts: "Контакты", bookNow: "Забронировать", attractions: "Досуг", videoGallery: "Видео", specialOffers: "Акции",
   },
   hero: {
     location: "Сенггиги · Ломбок · Индонезия",
@@ -456,6 +480,75 @@ const ru: Translations = {
       "Атмосфера резорта",
     ],
   },
+  specialOffers: {
+    sectionNum: "09 — Спецпредложения",
+    title1: "Особые",
+    title2: "предложения",
+    subtitle: "Эксклюзивные пакеты для незабываемого отдыха. Ограниченное количество мест — бронируйте заранее.",
+    badge: "Ограниченное предложение",
+    ctaBook: "Забронировать пакет",
+    ctaDetails: "Подробнее",
+    limitedLabel: "Осталось мест",
+    packages: [
+      {
+        id: "romantic",
+        tag: "Самый популярный",
+        title: "Романтический уикенд",
+        subtitle: "Для двоих",
+        duration: "2 ночи",
+        guests: "2 взрослых",
+        price: "от $89",
+        priceNote: "за 2 ночи · включая все услуги пакета",
+        highlights: [
+          "King-Size Suite с видом на сад",
+          "Завтрак для двоих в постель",
+          "Бутылка шампанского при заезде",
+          "Поздний выезд до 14:00",
+          "Украшение номера цветами",
+          "Приватный ужин у бассейна",
+        ],
+        cta: "Забронировать романтику",
+      },
+      {
+        id: "family",
+        tag: "Для семьи",
+        title: "Семейный отдых",
+        subtitle: "Для всей семьи",
+        duration: "3 ночи",
+        guests: "2 взрослых + дети",
+        price: "от $120",
+        priceNote: "за 3 ночи · дети до 12 лет бесплатно",
+        highlights: [
+          "Twin Garden Room с патио",
+          "Завтрак для всей семьи",
+          "Детское приветственное угощение",
+          "Бесплатный трансфер из аэропорта",
+          "Экскурсия на острова Гили",
+          "Поздний выезд до 14:00",
+        ],
+        cta: "Забронировать для семьи",
+      },
+      {
+        id: "longstay",
+        tag: "Лучшая цена",
+        title: "Длительное проживание",
+        subtitle: "7+ ночей",
+        duration: "7+ ночей",
+        guests: "1–2 взрослых",
+        price: "−20%",
+        priceNote: "скидка на стандартный тариф · от 7 ночей",
+        highlights: [
+          "Любой тип номера на выбор",
+          "Завтрак включён каждый день",
+          "Бесплатная прачечная",
+          "Скидка 20% на все услуги ресторана",
+          "Персональный менеджер",
+          "Гибкие условия отмены",
+        ],
+        cta: "Узнать о скидке",
+      },
+    ],
+  },
   attractions: {
     sectionNum: "09 — Досуг",
     title1: "Исследуйте",
@@ -543,7 +636,7 @@ const en: Translations = {
   nav: {
     about: "About", gallery: "Gallery", rooms: "Rooms", booking: "Book Now",
     amenities: "Amenities", restaurant: "Restaurant", faq: "FAQ", reviews: "Reviews",
-    contacts: "Contact", bookNow: "Book Now", attractions: "Explore", videoGallery: "Video",
+    contacts: "Contact", bookNow: "Book Now", attractions: "Explore", videoGallery: "Video", specialOffers: "Offers",
   },
   hero: {
     location: "Senggigi · Lombok · Indonesia",
@@ -848,6 +941,75 @@ const en: Translations = {
         desc: "Crystal-clear waters, abundant fish and corals. One of Indonesia's best snorkelling spots.",
         dist: "2 hrs by ferry",
         duration: "1 day",
+      },
+    ],
+  },
+  specialOffers: {
+    sectionNum: "09 — Special Offers",
+    title1: "Special",
+    title2: "Packages",
+    subtitle: "Exclusive packages for an unforgettable stay. Limited availability — book in advance.",
+    badge: "Limited Offer",
+    ctaBook: "Book Package",
+    ctaDetails: "Details",
+    limitedLabel: "Spots left",
+    packages: [
+      {
+        id: "romantic",
+        tag: "Most Popular",
+        title: "Romantic Weekend",
+        subtitle: "For Two",
+        duration: "2 nights",
+        guests: "2 adults",
+        price: "from $89",
+        priceNote: "for 2 nights · all package services included",
+        highlights: [
+          "King-Size Suite with garden view",
+          "Breakfast in bed for two",
+          "Champagne on arrival",
+          "Late check-out until 14:00",
+          "Room decorated with flowers",
+          "Private dinner by the pool",
+        ],
+        cta: "Book Romance",
+      },
+      {
+        id: "family",
+        tag: "Family",
+        title: "Family Holiday",
+        subtitle: "For the Whole Family",
+        duration: "3 nights",
+        guests: "2 adults + children",
+        price: "from $120",
+        priceNote: "for 3 nights · children under 12 stay free",
+        highlights: [
+          "Twin Garden Room with patio",
+          "Breakfast for the whole family",
+          "Children's welcome treat",
+          "Free airport transfer",
+          "Gili Islands excursion",
+          "Late check-out until 14:00",
+        ],
+        cta: "Book for Family",
+      },
+      {
+        id: "longstay",
+        tag: "Best Value",
+        title: "Long Stay",
+        subtitle: "7+ nights",
+        duration: "7+ nights",
+        guests: "1–2 adults",
+        price: "−20%",
+        priceNote: "discount on standard rate · from 7 nights",
+        highlights: [
+          "Any room type of your choice",
+          "Breakfast included every day",
+          "Free laundry service",
+          "20% off all restaurant services",
+          "Personal concierge",
+          "Flexible cancellation",
+        ],
+        cta: "Get Discount",
       },
     ],
   },
