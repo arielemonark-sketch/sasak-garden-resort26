@@ -8,6 +8,7 @@
 
 import AboutSection from "@/components/AboutSection";
 import CTASection from "@/components/CTASection";
+import TropicalOasisSection from "@/components/TropicalOasisSection";
 import AmenitiesSection from "@/components/AmenitiesSection";
 import AttractionsSection from "@/components/AttractionsSection";
 import BookingSection from "@/components/BookingSection";
@@ -57,6 +58,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <CTASection />
+      <TropicalOasisSection />
       <AboutSection />
       <GallerySection />
       <VideoGallerySection />
