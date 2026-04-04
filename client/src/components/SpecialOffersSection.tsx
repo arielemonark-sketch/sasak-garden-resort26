@@ -455,6 +455,7 @@ export default function SpecialOffersSection() {
           >
             {lang === "ru"
               ? "Все пакеты бронируются через Booking.com · Бесплатная отмена · Мгновенное подтверждение"
+              : lang === "id" ? "Semua paket dipesan via Booking.com · Pembatalan gratis · Konfirmasi instan"
               : "All packages booked via Booking.com · Free cancellation · Instant confirmation"}
           </p>
           <a
@@ -469,7 +470,7 @@ export default function SpecialOffersSection() {
               letterSpacing: "0.08em",
             }}
           >
-            {lang === "ru" ? "Смотреть все тарифы на Booking.com →" : "View all rates on Booking.com →"}
+            {lang === "ru" ? "Смотреть все тарифы на Booking.com →" : lang === "id" ? "Lihat semua tarif di Booking.com →" : "View all rates on Booking.com →"}
           </a>
         </div>
       </div>

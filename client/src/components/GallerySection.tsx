@@ -134,11 +134,11 @@ export default function GallerySection() {
   const [filter, setFilter] = useState<string>("all");
 
   const categories = [
-    { key: "all", ru: "Все", en: "All" },
-    { key: "pool", ru: "Бассейн", en: "Pool" },
-    { key: "room", ru: "Номера", en: "Rooms" },
-    { key: "garden", ru: "Сад", en: "Garden" },
-    { key: "food", ru: "Ресторан", en: "Restaurant" },
+    { key: "all", ru: "Все", en: "All", id: "Semua" },
+    { key: "pool", ru: "Бассейн", en: "Pool", id: "Kolam" },
+    { key: "room", ru: "Номера", en: "Rooms", id: "Kamar" },
+    { key: "garden", ru: "Сад", en: "Garden", id: "Taman" },
+    { key: "food", ru: "Ресторан", en: "Restaurant", id: "Restoran" },
   ];
 
   const filtered = filter === "all" ? GALLERY_PHOTOS : GALLERY_PHOTOS.filter(p => p.category === filter);
@@ -251,7 +251,7 @@ export default function GallerySection() {
                 transition: "all 0.2s ease",
               }}
             >
-              {lang === "ru" ? cat.ru : cat.en}
+              {lang === "ru" ? cat.ru : lang === "id" ? cat.id : cat.en}
             </button>
           ))}
         </div>
@@ -329,6 +329,7 @@ export default function GallerySection() {
         >
           {lang === "ru"
             ? `Показано ${filtered.length} из 69+ фотографий резорта`
+            : lang === "id" ? `Menampilkan ${filtered.length} dari 69+ foto resort`
             : `Showing ${filtered.length} of 69+ resort photos`}
           {" · "}
           <a
@@ -337,7 +338,7 @@ export default function GallerySection() {
             rel="noopener noreferrer"
             style={{ color: "#0F4A38", textDecoration: "underline" }}
           >
-            {lang === "ru" ? "Смотреть все на Booking.com" : "View all on Booking.com"}
+            {lang === "ru" ? "Смотреть все на Booking.com" : lang === "id" ? "Lihat semua di Booking.com" : "View all on Booking.com"}
           </a>
         </div>
       </div>

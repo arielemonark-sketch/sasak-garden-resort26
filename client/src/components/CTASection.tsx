@@ -20,19 +20,26 @@ const VIDEOS = [
   "https://d2xsxph8kpxj0f.cloudfront.net/310519663493652122/RYSrvNWLgwRH3mdy9NGPmq/resort-video-3_f17bfd53.mp4",
 ];
 
-const STATS_RU = [
-  { value: "9.9", label: "Рейтинг Booking.com" },
-  { value: "113+", label: "Отзывов гостей" },
-  { value: "300м", label: "До пляжа" },
-  { value: "24/7", label: "Ресепшн" },
-];
-
-const STATS_EN = [
-  { value: "9.9", label: "Booking.com Score" },
-  { value: "113+", label: "Guest Reviews" },
-  { value: "300m", label: "To the Beach" },
-  { value: "24/7", label: "Reception" },
-];
+const STATS_DATA: Record<string, Array<{value: string; label: string}>> = {
+  ru: [
+    { value: "9.9", label: "Рейтинг Booking.com" },
+    { value: "113+", label: "Отзывов гостей" },
+    { value: "300м", label: "До пляжа" },
+    { value: "24/7", label: "Ресепшн" },
+  ],
+  en: [
+    { value: "9.9", label: "Booking.com Score" },
+    { value: "113+", label: "Guest Reviews" },
+    { value: "300m", label: "To the Beach" },
+    { value: "24/7", label: "Reception" },
+  ],
+  id: [
+    { value: "9.9", label: "Skor Booking.com" },
+    { value: "113+", label: "Ulasan Tamu" },
+    { value: "300m", label: "Ke Pantai" },
+    { value: "24/7", label: "Resepsionis" },
+  ],
+};
 
 export default function CTASection() {
   const { lang } = useLang();
@@ -42,7 +49,7 @@ export default function CTASection() {
   const [videoIdx, setVideoIdx] = useState(0);
   const [videoOpen, setVideoOpen] = useState(false);
 
-  const STATS = lang === "ru" ? STATS_RU : STATS_EN;
+  const stats = STATS_DATA[lang] ?? STATS_DATA.en;
 
   // Intersection observer for entrance animation
   useEffect(() => {
@@ -143,7 +150,7 @@ export default function CTASection() {
                 backdropFilter: "blur(8px)",
               }}
             >
-              {STATS.map((stat, i) => (
+              {stats.map((stat, i) => (
                 <div
                   key={i}
                   style={{
@@ -214,7 +221,7 @@ export default function CTASection() {
                   fontWeight: 500,
                 }}
               >
-                {lang === "ru" ? "Реальное фото" : "Real Photo"}
+                {lang === "ru" ? "Реальное фото" : lang === "id" ? "Foto Asli" : "Real Photo"}
               </span>
             </div>
           </div>
@@ -359,7 +366,7 @@ export default function CTASection() {
                     textTransform: "uppercase",
                   }}
                 >
-                  {lang === "ru" ? "Видео резорта" : "Resort Video"}
+                  {lang === "ru" ? "Видео резорта" : lang === "id" ? "Video Resort" : "Resort Video"}
                 </span>
               </div>
             </div>
@@ -387,7 +394,7 @@ export default function CTASection() {
                     fontWeight: 500,
                   }}
                 >
-                  {lang === "ru" ? "Сенггиги, Ломбок" : "Senggigi, Lombok"}
+                  {"Senggigi, Lombok"}
                 </div>
                 <h3
                   className="font-serif"
@@ -399,9 +406,7 @@ export default function CTASection() {
                     margin: 0,
                   }}
                 >
-                  {lang === "ru"
-                    ? "Тропический рай"
-                    : "Your tropical paradise"}
+                  {lang === "ru" ? "Тропический рай" : lang === "id" ? "Surga tropis" : "Your tropical paradise"}
                   <br />
                   <em
                     style={{
@@ -410,7 +415,7 @@ export default function CTASection() {
                       color: "#D4B88A",
                     }}
                   >
-                    {lang === "ru" ? "ждёт вас" : "awaits you"}
+                    {lang === "ru" ? "ждёт вас" : lang === "id" ? "menanti Anda" : "awaits you"}
                   </em>
                 </h3>
               </div>
@@ -426,6 +431,8 @@ export default function CTASection() {
               >
                 {lang === "ru"
                   ? "Открытый бассейн, тропический сад, ресторан и пляж в 300 метрах. Бесплатная парковка и Wi-Fi 200 Мбит/с."
+                  : lang === "id"
+                  ? "Kolam renang, taman tropis, restoran, dan pantai hanya 300m. Parkir gratis dan Wi-Fi 200 Mbps."
                   : "Open pool, tropical garden, restaurant and beach just 300m away. Free parking and 200 Mbps Wi-Fi included."}
               </p>
 
@@ -438,9 +445,9 @@ export default function CTASection() {
                 }}
               >
                 {[
-                  { icon: "✓", text: lang === "ru" ? "Бесплатная отмена" : "Free cancellation" },
-                  { icon: "✓", text: lang === "ru" ? "Завтрак включён" : "Breakfast included" },
-                  { icon: "✓", text: lang === "ru" ? "Лучшая цена" : "Best price" },
+                  { icon: "✓", text: lang === "ru" ? "Бесплатная отмена" : lang === "id" ? "Pembatalan gratis" : "Free cancellation" },
+                  { icon: "✓", text: lang === "ru" ? "Завтрак включён" : lang === "id" ? "Sarapan termasuk" : "Breakfast included" },
+                  { icon: "✓", text: lang === "ru" ? "Лучшая цена" : lang === "id" ? "Harga terbaik" : "Best price" },
                 ].map((item, i) => (
                   <div
                     key={i}
@@ -517,7 +524,7 @@ export default function CTASection() {
                   <path d="M1 7h14" stroke="currentColor" strokeWidth="1.3"/>
                   <path d="M5 1v4M11 1v4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
                 </svg>
-                {lang === "ru" ? "Забронировать номер" : "Book Your Room"}
+                {lang === "ru" ? "Забронировать номер" : lang === "id" ? "Pesan Kamar" : "Book Your Room"}
               </a>
             </div>
           </div>

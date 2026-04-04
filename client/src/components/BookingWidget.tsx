@@ -73,7 +73,7 @@ export default function BookingWidget({ variant = "section" }: BookingWidgetProp
   );
   const nightsLabel = lang === "ru"
     ? nights === 1 ? t.bookingWidget.nights1 : nights < 5 ? t.bookingWidget.nights2 : t.bookingWidget.nights5
-    : nights === 1 ? t.bookingWidget.nights1 : t.bookingWidget.nights2;
+    : nights === 1 ? t.bookingWidget.nights1 : t.bookingWidget.nights2;  // EN/ID use same plural form
 
   /* ---- Shared style tokens ---- */
   const bg = isHero
