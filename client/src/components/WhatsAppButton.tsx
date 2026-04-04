@@ -12,7 +12,7 @@
 import { useLang } from "@/contexts/LanguageContext";
 import { useEffect, useState } from "react";
 
-const WHATSAPP_NUMBER = "6281917477755";
+const WHATSAPP_NUMBER = "62123456789012";
 
 const MESSAGES: Record<string, string> = {
   en: "Hello! I'm interested in booking a room at Sasak Garden Resort. Could you help me?",
