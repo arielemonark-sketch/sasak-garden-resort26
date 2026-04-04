@@ -1,0 +1,33 @@
+# robots.txt — Sasak Garden Resort
+# https://sasakgardenresort.com
+
+# Allow all search engine crawlers
+User-agent: *
+Allow: /
+
+# Disallow any admin or internal paths (none currently, but future-proofing)
+Disallow: /api/
+Disallow: /_vite/
+
+# Sitemap location
+Sitemap: https://sasakgardenresort.com/sitemap.xml
+
+# Crawl-delay for polite crawling (optional, in seconds)
+Crawl-delay: 1
+
+# Specific rules for major crawlers
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 1
+
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2

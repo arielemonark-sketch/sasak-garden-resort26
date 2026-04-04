@@ -156,6 +156,9 @@ export default function SEOHead() {
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Sasak Garden Resort" />
 
+      {/* Sitemap */}
+      <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
       {/* Canonical */}
       <link rel="canonical" href={seo.canonical} />
 
