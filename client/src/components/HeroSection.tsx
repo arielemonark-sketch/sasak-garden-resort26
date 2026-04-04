@@ -10,8 +10,10 @@ import { useEffect, useRef, useState } from "react";
 export default function HeroSection() {
   const { t } = useLang();
   const heroRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [loaded, setLoaded] = useState(false);
   const [scrollY, setScrollY] = useState(0);
+  const [videoReady, setVideoReady] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100);
@@ -40,18 +42,49 @@ export default function HeroSection() {
         justifyContent: "center",
       }}
     >
-      {/* Background image with parallax */}
+      {/* Background video with parallax */}
       <div
         style={{
           position: "absolute",
           inset: "-20% 0",
-          backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663493652122/RYSrvNWLgwRH3mdy9NGPmq/hero-pool-Pue6srXm3JVMUm9PHDPzym.webp)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
           transform: `translateY(${parallaxOffset}px)`,
           transition: "transform 0.1s linear",
+          overflow: "hidden",
         }}
-      />
+      >
+        {/* Fallback image shown until video loads */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage: `url(https://d2xsxph8kpxj0f.cloudfront.net/310519663493652122/RYSrvNWLgwRH3mdy9NGPmq/hero-pool-Pue6srXm3JVMUm9PHDPzym.webp)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: videoReady ? 0 : 1,
+            transition: "opacity 1.5s ease",
+          }}
+        />
+        <video
+          ref={videoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onCanPlay={() => setVideoReady(true)}
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            objectPosition: "center",
+            opacity: videoReady ? 1 : 0,
+            transition: "opacity 1.5s ease",
+          }}
+        >
+          <source src="https://d2xsxph8kpxj0f.cloudfront.net/310519663493652122/RYSrvNWLgwRH3mdy9NGPmq/hero-video_f3a44ab9.mp4" type="video/mp4" />
+        </video>
+      </div>
 
       {/* Gradient overlay */}
       <div

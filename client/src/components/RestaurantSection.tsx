@@ -253,7 +253,7 @@ export default function RestaurantSection() {
                 </ul>
               </div>
             );
-            })}
+          })}
           </div>
         </div>
       </div>
